@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="d-flex justify-content-center mt-5">
+    <div class="bg-warning border border-4 border-danger p-3 mx-3 " style="width: 40%;">
+      <p class="text-center">Employee Onboarding</p>
+      Name:
+      <input type="text" class="form-control form-control-sm" (input)="name = $any($event).target.value" />
+      Join Date:
+      <input type="date" class="form-control form-control-sm" (input)="joinDate = $any($event).target.value" />
+      Salary:
+      <input type="number" min="15000" class="form-control form-control-sm"
+        (input)="salary = $any($event).target.value" />
+      Height (cm):
+      <input type="number" min="50" class="form-control form-control-sm" (input)="height = $any($event).target.value" />
+    </div>
+
+    <div class="bg-success border border-4 border-primary p-3 mx-3 px-4 text-white" style="width: 40%;">
+      <p class="text-center">Review Employee</p>
+      <div class="mt-3">
+        Name: <br />
+        <span *ngIf="name == null"> &nbsp; </span>
+        <span *ngIf="name !== null"> {{name | titlecase}} </span>
+      </div>
+      <div class="mt-2">
+        Join Date: <br />
+        <span *ngIf="joinDate == null"> &nbsp; </span>
+        <span *ngIf="joinDate !== null"> {{joinDate | date:'MMM d, y'}} </span>
+      </div>
+      <div class="mt-2">
+        Salary (NRs.): <br />
+        <span *ngIf="salary == null"> &nbsp; </span>
+        <span *ngIf="salary !== null"> रु. {{salary| number:'1.2-2'}} </span>
+      </div>
+      <div class="mt-2">
+        Height: <br />
+        <span *ngIf="height == null"> &nbsp; </span>
+        <span *ngIf="height !== null"> {{ getFloorNumber(height/30.48) }} ' {{ (height%30.48)/2.54 | number:'1.0-0' }} " </span>
+      </div>
+    </div>
+  </div>
+</div>
